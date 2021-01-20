@@ -23,13 +23,13 @@ class Matrix:
     def addMatrix(self,x,y):
         """ Matrix object for addition of two matrices
     
-    Arguments
-    x : first matrix
-    y : second matrix
+        Arguments
+        x : first matrix
+        y : second matrix
     
-    Returns
-    sum: addition of two matrices
-    """
+        Returns
+        sum: addition of two matrices
+        """
         if(len(x) == len(y) and len(x[0]) == len(y[0])):
             sum = [[0 for j in range(0,len(x[0]))] for i in range(0,len(x))]
             for i in range(0, len(x)):
@@ -43,12 +43,12 @@ class Matrix:
     def showMatrix(self,x):
         """ Matrix object for displaying a Matrix
     
-    Attributes
-    x : matrix
+        Attributes
+        x : matrix
     
-    Returns
-    x : prints out matrix
-    """
+        Returns
+        x : prints out matrix
+        """
         if isinstance(x, str) == False: #checking if return value is a string
             for i in range(0, len(x)):
                 for j in range(0, len(x[0])):
