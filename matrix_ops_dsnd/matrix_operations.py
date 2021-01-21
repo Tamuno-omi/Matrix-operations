@@ -106,3 +106,16 @@ class Matrix:
                 for j in range(len(y[0])):
                     y[i][j] = x*y[i][j]
             return y   
+        
+    def inverseMatrix(self,x):
+        """ Matrix object invert a matrix
+    
+        Arguments
+        x : matrix
+    
+        Returns
+        inv: inverse of matrix
+        """
+        det = detMatrix(x)
+        inv = multiplyMatrix(1/det,adjMatrix(x))
+        return inv        
