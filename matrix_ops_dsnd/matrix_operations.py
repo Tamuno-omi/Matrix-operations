@@ -119,3 +119,6 @@ class Matrix:
         det = detMatrix(x)
         inv = multiplyMatrix(1/det,adjMatrix(x))
         return inv        
+#TODO : implement detMatrix() method
+#TODO : implement cofactor() method
+#TODO : implement adjMatrix() method
