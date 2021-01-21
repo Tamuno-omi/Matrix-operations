@@ -78,3 +78,31 @@ class Matrix:
         else:
             error = "Matrices of different order"
             return error
+     
+    def multiplyMatrix(self,x, y):
+        """ Matrix object for multiplication of two matrices
+    
+        Arguments
+        x : first matrix
+        y : second matrix
+    
+        Returns
+        mult: result of the multiplication of two matrices
+        """
+        if(isinstance(x,(int, float)) == False):
+            if(len(x[1]) == len(y)):
+                mult = [[0 for j in range(len(y[0]))] for i in range(len(x))]
+                for p in range(0, len(mult)):
+                    for q in range(0, len(mult[0])):
+                        for i in range(0, len(x[0])):
+                            mult[p][q] += x[p][i]*y[i][q]
+                return mult
+
+            else:
+                error = "Invalid Order of Matrices"
+                return error
+        else:
+            for i in range(len(y)):
+                for j in range(len(y[0])):
+                    y[i][j] = x*y[i][j]
+            return y   
