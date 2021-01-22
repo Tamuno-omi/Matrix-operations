@@ -122,3 +122,48 @@ class Matrix:
 #TODO : implement detMatrix() method
 #TODO : implement cofactor() method
 #TODO : implement adjMatrix() method
+
+    def detMatrix(x):
+        if(len(x) != len(x[0])):
+            error = "Matrix is not square"
+            return error
+        det = 0
+        order = len(x)
+
+        if(order == 2):
+            det = x[0][0]*x[1][1] - x[0][1]*x[1][0]
+            return det
+        else: #optimization required
+            for j in range(0, len(x[0])):
+                det += ((-1)**j)*x[0][j]*detMatrix(cofactor(x,0,j)) #Recursive call
+            return det
+    #extracting Co-factors and adjoint of addMatrix
+    def cofactor(x,r,c):
+        if(len(x) != len(x[0])):
+            error = "Matrix is not square"
+            return error
+        order = len(x)
+        cof = [[0 for x in range(0,order-1)] for y in range(0,order-1)]
+        a , b = 0, 0
+        for i in range(0,len(x)):
+            if(i == r):
+                continue
+            b = 0
+            for j in range(0, len(x[0])):
+                if(j == c):
+                    continue
+                cof[a][b] = x[i][j]
+                b = b + 1
+            a = a +1
+        return cof
+
+    def adjMatrix(x):
+        if(len(x) != len(x[0])):
+            error = "Matrix is not square"
+            return error
+        adj = [[0 for a in range(0,len(x))] for b in range(0,len(x))]
+        for i in range(0,len(x)):
+            for j in range(0,len(x)):
+                adj[i][j] = ((-1)**(i+j))*detMatrix(cofactor(x,i,j))
+        adj = transposeMatrix(adj)
+        return adj
